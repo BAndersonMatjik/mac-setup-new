@@ -1,5 +1,5 @@
 # mac-setup-new
-setup macbook new
+New MacBook setup.
 
 ## Install Scripts
 

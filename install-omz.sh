@@ -11,7 +11,10 @@ install_script_url="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 install_script_path="$(mktemp)"
 trap 'rm -f "$install_script_path"' EXIT INT TERM
 
-curl -fsSL "$install_script_url" -o "$install_script_path"
+if ! curl -fsSL "$install_script_url" -o "$install_script_path"; then
+  echo "Failed to download Oh My Zsh installer."
+  exit 1
+fi
 echo "Installer downloaded to: $install_script_path"
 echo "Review it before continuing."
 if [ "${AUTO_APPROVE:-0}" = "1" ]; then

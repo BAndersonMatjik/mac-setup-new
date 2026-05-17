@@ -14,8 +14,15 @@ trap 'rm -f "$install_script_path"' EXIT INT TERM
 curl -fsSL "$install_script_url" -o "$install_script_path"
 echo "Installer downloaded to: $install_script_path"
 echo "Review it before continuing."
-printf "Continue with Homebrew install? [y/N]: "
-read -r answer
+if [ "${AUTO_APPROVE:-0}" = "1" ]; then
+  answer="yes"
+elif [ -t 0 ]; then
+  printf "Continue with Homebrew install? [y/N]: "
+  read -r answer
+else
+  echo "Non-interactive shell detected. Re-run with AUTO_APPROVE=1 to continue."
+  exit 1
+fi
 
 case "$answer" in
   y|Y|yes|YES)

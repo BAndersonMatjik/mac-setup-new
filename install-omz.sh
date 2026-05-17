@@ -11,7 +11,7 @@ install_script_url="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 install_script_path="$(mktemp)"
 trap 'rm -f "$install_script_path"' EXIT INT TERM
 
-if ! curl -fsSL "$install_script_url" -o "$install_script_path"; then
+if ! curl -fsSL --connect-timeout 10 --max-time 120 "$install_script_url" -o "$install_script_path"; then
   echo "Failed to download Oh My Zsh installer."
   exit 1
 fi

@@ -17,6 +17,7 @@ if ! curl -fsSL "$install_script_url" -o "$install_script_path"; then
 fi
 echo "Installer downloaded to: $install_script_path"
 echo "Review it before continuing."
+echo "Inspect with: less \"$install_script_path\""
 if [ "${AUTO_APPROVE:-0}" = "1" ]; then
   answer="yes"
 elif [ -t 0 ]; then

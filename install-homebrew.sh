@@ -30,7 +30,10 @@ fi
 
 case "$answer" in
   y|Y|yes|YES)
-    /bin/bash "$install_script_path"
+    if ! /bin/bash "$install_script_path"; then
+      echo "Homebrew installation failed."
+      exit 1
+    fi
     ;;
   *)
     echo "Cancelled."

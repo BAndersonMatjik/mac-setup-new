@@ -30,7 +30,10 @@ fi
 
 case "$answer" in
   y|Y|yes|YES)
-    RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh "$install_script_path"
+    if ! RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh "$install_script_path"; then
+      echo "Oh My Zsh installation failed."
+      exit 1
+    fi
     ;;
   *)
     echo "Cancelled."

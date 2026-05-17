@@ -3,13 +3,13 @@ setup macbook new
 
 ## Install Scripts
 
-run Homebrew install first:
+Run Homebrew install first:
 
 ```sh
 sh ./install-homebrew.sh
 ```
 
-then install Oh My Zsh:
+Then install Oh My Zsh:
 
 ```sh
 sh ./install-omz.sh
